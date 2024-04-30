@@ -22,6 +22,9 @@ include("_includes/config.inc");
       $data['content'] .= "<table border='1'>";
       $data['content'] .= "<tr><th>Student Id </th><th>DOB</th><th>firstname</th></th><th>lastname</th><th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</tr>";
       
+     //wrap table in a form
+     //form will post to deletestudents.php
+
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) {
          $data['content'] .= "<tr>";
@@ -34,10 +37,13 @@ include("_includes/config.inc");
          $data['content'] .= "<td>       {$row["county"]} </td>";
          $data['content'] .= "<td>       {$row["country"]} </td>";
          $data['content'] .= "<td>       {$row["postcode"]} </td>";
+         $data['content'] .= "<td>      <input type='checkbox' name='' value='' </td>";
          $data['content'] .="</td></tr>";
       }
     
       $data['content'] .= "</table>";
+
+      //todo delete button
 
       // render the template
       echo template("templates/default.php", $data);
