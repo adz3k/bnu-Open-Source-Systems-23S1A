@@ -20,8 +20,7 @@ include("_includes/config.inc");
 
       // prepare page content
       $data['content'] .= "<table border='1'>";
-      $data['content'] .= "<tr><th>Student Id </th><th>DOB</th><th>firstname</th></th><th>lastname</th><th>DOB<
-      </th><th>DOB<</th><th>DOB<</th><th>DOB<</tr>";
+      $data['content'] .= "<tr><th>Student Id </th><th>DOB</th><th>firstname</th></th><th>lastname</th><th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</tr>";
       
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) {
@@ -30,7 +29,12 @@ include("_includes/config.inc");
          $data['content'] .= "<td>       {$row["dob"]} </td>";
          $data['content'] .= "<td>       {$row["firstname"]} </td>";
          $data['content'] .= "<td>       {$row["lastname"]} </td>";
-          $data['content'] .="</td></tr>";
+         $data['content'] .= "<td>       {$row["house"]} </td>";
+         $data['content'] .= "<td>       {$row["town"]} </td>";
+         $data['content'] .= "<td>       {$row["county"]} </td>";
+         $data['content'] .= "<td>       {$row["country"]} </td>";
+         $data['content'] .= "<td>       {$row["postcode"]} </td>";
+         $data['content'] .="</td></tr>";
       }
     
       $data['content'] .= "</table>";
