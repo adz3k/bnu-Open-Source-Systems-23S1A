@@ -18,12 +18,15 @@ include("_includes/config.inc");
 
       $result = mysqli_query($conn,$sql);
 
+     //wrap table in a form
+     //form will post to deletestudents.php
+     $data['content'] .="<form action ='deletestudents.php' method='POST'>";
+
       // prepare page content
       $data['content'] .= "<table border='1'>";
       $data['content'] .= "<tr><th>Student Id </th><th>DOB</th><th>firstname</th></th><th>lastname</th><th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</tr>";
       
-     //wrap table in a form
-     //form will post to deletestudents.php
+     
 
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) {
@@ -37,7 +40,8 @@ include("_includes/config.inc");
          $data['content'] .= "<td>       {$row["county"]} </td>";
          $data['content'] .= "<td>       {$row["country"]} </td>";
          $data['content'] .= "<td>       {$row["postcode"]} </td>";
-         $data['content'] .= "<td>      <input type='checkbox' name='' value='' </td>";
+         //add value to each textbox
+         $data['content'] .= "<td>      <input type='checkbox' name='students[]' value='$row[studentid]' </td>";
          $data['content'] .="</td></tr>";
       }
     
@@ -45,7 +49,16 @@ include("_includes/config.inc");
 
       //todo delete button
 
+      $data['content'] .="<input type= 'submit'name='deletebtn' value='Delete' />";
+
+      $data['content'] .="</form>";
+
+
+
       // render the template
+
+
+
       echo template("templates/default.php", $data);
 
      } else {
