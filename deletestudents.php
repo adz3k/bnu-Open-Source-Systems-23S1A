@@ -9,19 +9,27 @@
    if (isset($_SESSION['id'])) {
 
 
-    var_dump($_POST);
+    var_dump($_POST['students']);
     die();
+    
+     if (empty($_POST['students'])) {
 
-      
-     //$sql = "select * from student;";
+        
+     }
 
-     // $result = mysqli_query($conn,$sql);
+    // loop over  var_dump($_POST['students']); - foreach()
+    //build sql query to delete item
+    
 
-     
+     $sql = "DELETE from...;"; //finish off
+    // run the query
+     $result = mysqli_query($conn,$sql);
 
-     header("Location: students.php")
+     //redirect
 
-     } else {
+     header("Location: students.php");
+
+    } else {
       header("Location: index.php");
    }
 
