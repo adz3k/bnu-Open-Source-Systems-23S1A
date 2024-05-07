@@ -1,5 +1,5 @@
 <?php
-include("_includes/config.inc");
+   include("_includes/config.inc");
    include("_includes/dbconnect.inc");
    include("_includes/functions.inc");
 
@@ -23,14 +23,14 @@ include("_includes/config.inc");
      $data['content'] .="<form action ='deletestudents.php' method='POST'>";
 
       // prepare page content
-      $data['content'] .= "<table border='1'>";
+      $data['content'] .= "<table border='1' class='table table-bordered table-group-divider table-striped table-hover mt-3'>";
       $data['content'] .= "<tr><th>Student Id </th><th>DOB</th><th>firstname</th></th><th>lastname</th><th>house</th><th>town</th><th>county</th><th>country</th><th>postcode</tr>";
       
      
 
       // Display the modules within the html table
       while($row = mysqli_fetch_array($result)) {
-         $data['content'] .= "<tr>";
+         $data['content'] .= "<tr>"     ;
          $data['content'] .= "<td>       {$row["studentid"]} </td>";
          $data['content'] .= "<td>       {$row["dob"]} </td>";
          $data['content'] .= "<td>       {$row["firstname"]} </td>";
