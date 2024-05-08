@@ -40,7 +40,10 @@
          $data['content'] .= "<td>       {$row["county"]} </td>";
          $data['content'] .= "<td>       {$row["country"]} </td>";
          $data['content'] .= "<td>       {$row["postcode"]} </td>";
+         
          //add value to each textbox
+         $data['content'] .= "<td><img src='{$row["images"]}' width='42' height='42'></td>";
+    
          $data['content'] .= "<td>      <input type='checkbox' name='students[]' value='$row[studentid]' </td>";
          $data['content'] .="</td></tr>";
       }

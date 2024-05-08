@@ -42,20 +42,33 @@ if (isset($_SESSION['id'])) {
 
    <h2>My Details</h2>
    <form name="frmdetails" action="" method="post">
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
+   <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="txtfirstname">Firstname</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txtfirstname' value="{$row['firstname']}">
+    </div><div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="txtlastname">Surname</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txtlastname'value="{$row['lastname']}">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="txthouse">Number and Street</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txthouse' value="{$row['house']}">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="txttown">Town</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txttown' value="{$row['town']}">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="txtcounty">County</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txtcounty' value="{$row['county']}">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="txtcountry">Country</span>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txtcountry' value="{$row['country']}">
+    </div>
+    <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text" id="txtpostcode">Postcode</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='txtpostcode' value="{$row['postcode']}">
+  </div>
    <input type="submit" value="Save" name="submit"/>
    </form>
 
@@ -73,3 +86,5 @@ EOD;
 echo template("templates/partials/footer.php");
 
 ?>
+
+

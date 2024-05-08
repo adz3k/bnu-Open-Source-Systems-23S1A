@@ -71,13 +71,28 @@ if (isset($_SESSION['id'])) {
 
 
 
-      $hashed_password = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+      $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
       //todo: insert statement
 
-      $sql = "INSERT INTO student (studentid, dob, firstname, lastname, password, house, town, county, country, postcode)Values('{$_POST['id']}', '{$_POST['dob']}', '{$_POST['firstname']}', '{$_POST['lastname']}', '$hashed_password', '{$_POST['house']}', '{$_POST['town']}', '{$_POST['county']}', '{$_POST['country']}', '{$_POST['postcode']}')";
+      $studentid = mysqli_real_escape_string($conn, $_POST['studentid']);
+      $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+      $firstname = mysqli_real_escape_string($conn, $_POST['firstname']); 
+      $lastname= mysqli_real_escape_string($conn, $_POST['lastname']);
+      $password = mysqli_real_escape_string($conn, $_POST['password']);
+      $house = mysqli_real_escape_string($conn, $_POST['house']);
+      $town = mysqli_real_escape_string($conn, $_POST['town']);
+      $county = mysqli_real_escape_string($conn, $_POST['county']);
+      $country = mysqli_real_escape_string($conn, $_POST['country']);
+      $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+      // $images = mysqli_real_escape_string($conn, $_POST['images']);
 
-      echo $sql;
+      $sql="INSERT INTO student (studentid, dob, firstname, lastname, password, house, town, county, country, postcode, images) VALUES ('$studentid', '$dob', '$firstname','$lastname', '$hashed_password', '$house','$town', '$county', '$country','$postcode', '$target_file')";
+   
+
+    //  $sql = "INSERT INTO student (studentid, dob, firstname, lastname, password, house, town, county, country, postcode, images)Values('{$_POST['id']}', '{$_POST['dob']}', '{$_POST['firstname']}', '{$_POST['lastname']}', '$hashed_password', '{$_POST['house']}', '{$_POST['town']}', '{$_POST['county']}', '{$_POST['country']}', '{$_POST['postcode']}','$target_file')";
+
+      // echo $sql;
 
       $result = mysqli_query($conn,$sql);
 
@@ -92,10 +107,10 @@ if (isset($_SESSION['id'])) {
    $data['content'] = <<<EOD
 
    <h2>Add new students</h2>
-    <form name="frmdetails" action="" method="post">
+   <form enctype="multipart/form-data" action="" method="post">
 <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="id">ID</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='id'>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='studentid'>
     </div><div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="dob">Dob</span>
       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='dob'>
@@ -110,7 +125,7 @@ if (isset($_SESSION['id'])) {
     </div>
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="Password">Password</span>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='Password'>
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='password'>
     </div>
     <div class="input-group input-group-sm mb-3">
       <span class="input-group-text" id="house">Number&Street</span>
@@ -132,8 +147,8 @@ if (isset($_SESSION['id'])) {
       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='postcode'>
     </div>
     <div class="input-group input-group-sm mb-3">
-    <span class="input-group-text" id="insert image">image upload</span>
-    <input type="file" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='insert image'>
+    <span class="input-group-text" id="fileToUpload">image upload</span>
+    <input type="file" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name='fileToUpload'>
   </div>
     <div class="mb-3 form-check">
   <input type="submit" name="submit" class="btn btn-primary" value="Save"/>
